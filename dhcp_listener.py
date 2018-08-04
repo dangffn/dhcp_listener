@@ -101,7 +101,7 @@ class Packet:
     def dump(self):
         for key in self.options.keys():
             h_val = Utils.hexify(self.options[key])
-            print "[VERBOSE] Option:%s  Hex_Value:%s  Value:%s" % (key, h_val, self.options[key])
+            print("[VERBOSE] Option:%s  Hex_Value:%s  Value:%s" % (key, h_val, self.options[key]))
 
     def __str__(self): # value returned when you cast a Packet object to str  ex. str(Packet())
         type_value = ord(self.options.get(self.DHCP_OP_MESSAGETYPE))
@@ -139,14 +139,14 @@ def run_server():
         try:
             message, addr = s.recvfrom(1024)
         except:
-            print "Socket closed, goodbye!"
+            print("Socket closed, goodbye!")
             sys.exit(0)
 
         # convert the raw data received to a Packet object
         packet = Packet(message)
 
         # print nice clean formatted string from __str__() method in Packet()
-        print str(packet)
+        print(str(packet))
 
         # show all the "DHCP Options" received from the DHCP packet
         if VERBOSE:
