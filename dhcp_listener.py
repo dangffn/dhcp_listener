@@ -11,15 +11,15 @@ class Utils:
     @staticmethod
     def hexify(s):
         # convert string to hex
-        return "".join([hex(ord(i))[2:].zfill(2) for i in s])
+        return "".join([hex(ord(chr(i)))[2:].zfill(2) for i in s])
 
     @staticmethod
     def convert_ip(s):
-        return ".".join([str(ord(i)) for i in s])
+        return ".".join([str(ord(chr(i))) for i in s])
 
     @staticmethod
     def convert_mac(s):
-        return ":".join([hex(ord(i))[2:].zfill(2) for i in s])
+        return ":".join([hex(ord(chr(i)))[2:].zfill(2) for i in s])
 
 
 class Packet:
@@ -151,7 +151,7 @@ def run_server():
         # show all the "DHCP Options" received from the DHCP packet
         if VERBOSE:
             packet.dump()
-            print
+            print()
 
 
 if __name__ == "__main__": # only run if this script is started directly, and not if this script is imported into another file
